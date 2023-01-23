@@ -102,12 +102,152 @@
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS characters;
+DROP TABLE IF EXISTS studios;
+
 -- Create new tables, according to your domain model
 -- TODO!
+
+CREATE TABLE actors (
+    id INTEGER PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT
+);
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    year_released INTEGER,
+    MPAA_rating TEXT
+);
+
+CREATE TABLE characters (
+    id INTEGER PRIMARY KEY,
+    character_name TEXT,
+    actors_id INTEGER
+);
+
+CREATE TABLE studios (
+    id INTEGER PRIMARY KEY,
+    studio_name TEXT,
+    movies_id INTEGER
+);
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+
+INSERT INTO actors(
+    "first_name",
+    "last_name"
+) VALUES (
+    "Aaron",
+    "Eckhart"
+),
+(
+    "Anne",
+    "Hathaway"
+),
+(
+    "Christian",
+    "Bale"
+),
+(
+    "Gary",
+    "Oldman"
+),
+(
+    "Heath",
+    "Ledger"
+),
+(
+    "Joseph",
+    "Gordon-Levitt"
+),
+(
+    "Katie",
+    "Holmes"
+),
+(
+    "Liam",
+    "Neeson"
+),
+(
+    "Maggie",
+    "Gyllenhaal"
+),
+(
+    "Michael",
+    "Caine"
+),
+(
+    "Tom",
+    "Hardy"
+);
+
+
+INSERT INTO movies(
+    "title",
+    "year_released",
+    "MPAA_rating"
+) VALUES (
+    "Batman Begins",
+    "2005",
+    "PG-13"
+),
+(
+    "The Dark Knight",
+    "2008",
+    "PG-13"
+),
+(
+    "The Dark Knight Rises",
+    "2012",
+    "PG-13"
+);
+
+
+INSERT INTO characters (
+    "character_name"
+) VALUES (
+    "Bruce Wayne"
+),
+(
+    "Alfred"
+),
+(
+    "Ra's Al Ghul"
+),
+(
+    "Rachel Dawes"
+),
+(
+    "Commissioner Gordon"
+),
+(
+    "Joker"
+),
+(
+    "Harvey Dent"
+),
+(
+    "Bane"
+),
+(
+    "John Blake"
+),
+(
+    "Selina Kyle"
+);
+
+
+INSERT INTO studios(
+    "studio_name"
+) VALUES (
+    "Warner Bros."
+);
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -116,6 +256,8 @@
 
 -- The SQL statement for the movies output
 -- TODO!
+
+
 
 -- Prints a header for the cast output
 .print ""
@@ -126,3 +268,4 @@
 
 -- The SQL statement for the cast output
 -- TODO!
+
