@@ -313,6 +313,6 @@ INNER JOIN studios ON movies.studios_id = studios.id;
 -- TODO! (DONE)
 
 SELECT movies.title, actors.actor_name, characters.character_name
-FROM actors 
-INNER JOIN characters ON characters.actors_id = actors.id 
+FROM characters 
+INNER JOIN actors ON characters.actors_id = actors.id 
 INNER JOIN movies ON characters.movies_id = movies.id;
