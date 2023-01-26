@@ -113,14 +113,16 @@ DROP TABLE IF EXISTS studios;
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY,
     first_name TEXT,
-    last_name TEXT
+    last_name TEXT,
+    character_id INTEGER
 );
 
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY,
     title TEXT,
     year_released INTEGER,
-    MPAA_rating TEXT
+    MPAA_rating TEXT,
+    studios_id INTEGER
 );
 
 CREATE TABLE characters (
@@ -131,8 +133,7 @@ CREATE TABLE characters (
 
 CREATE TABLE studios (
     id INTEGER PRIMARY KEY,
-    studio_name TEXT,
-    movies_id INTEGER
+    studio_name TEXT
 );
 
 -- Insert data into your database that reflects the sample data shown above
@@ -141,102 +142,118 @@ CREATE TABLE studios (
 
 INSERT INTO actors(
     "first_name",
-    "last_name"
+    "last_name",
+    "character_id"
 ) VALUES (
     "Aaron",
-    "Eckhart"
+    "Eckhart",
+    5
 ),
 (
     "Anne",
-    "Hathaway"
+    "Hathaway",
+    10
 ),
 (
     "Christian",
-    "Bale"
+    "Bale",
+    3
 ),
 (
     "Gary",
-    "Oldman"
+    "Oldman",
+    4
 ),
 (
     "Heath",
-    "Ledger"
+    "Ledger",
+    7
 ),
 (
     "Joseph",
-    "Gordon-Levitt"
+    "Gordon-Levitt",
+    6
 ),
 (
     "Katie",
-    "Holmes"
+    "Holmes",
+    8
 ),
 (
     "Liam",
-    "Neeson"
+    "Neeson",
+    9
 ),
 (
     "Maggie",
-    "Gyllenhaal"
+    "Gyllenhaal",
+    8
 ),
 (
     "Michael",
-    "Caine"
+    "Caine",
+    1
 ),
 (
     "Tom",
-    "Hardy"
+    "Hardy",
+    2
 );
 
 
 INSERT INTO movies(
     "title",
     "year_released",
-    "MPAA_rating"
+    "MPAA_rating",
+    "studios_id"
 ) VALUES (
     "Batman Begins",
-    "2005",
-    "PG-13"
+    2005,
+    "PG-13",
+    1
 ),
 (
     "The Dark Knight",
-    "2008",
-    "PG-13"
+    2008,
+    "PG-13",
+    1
 ),
 (
     "The Dark Knight Rises",
-    "2012",
-    "PG-13"
+    2012,
+    "PG-13",
+    1
 );
 
 
 INSERT INTO characters (
     "character_name"
 ) VALUES (
-    "Bruce Wayne"
-),
-(
     "Alfred"
-),
-(
-    "Ra's Al Ghul"
-),
-(
-    "Rachel Dawes"
-),
-(
-    "Commissioner Gordon"
-),
-(
-    "Joker"
-),
-(
-    "Harvey Dent"
 ),
 (
     "Bane"
 ),
 (
+    "Bruce Wayne"
+),
+(
+    "Commissioner Gordon"
+),
+(
+    "Harvey Dent"
+),
+(
     "John Blake"
+),
+(
+    "Joker"
+),
+(
+    "Rachel Dawes"
+),
+(
+    "Ra's Al Ghul"
 ),
 (
     "Selina Kyle"
@@ -257,6 +274,8 @@ INSERT INTO studios(
 -- The SQL statement for the movies output
 -- TODO!
 
+SELECT movies.title, movies.year_released, movies.MPAA_rating, studios.studio_name 
+FROM movies INNER JOIN studios ON movies.studios_id = studios.id;
 
 
 -- Prints a header for the cast output
